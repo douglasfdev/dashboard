@@ -1,12 +1,12 @@
 <template>
   <header class="header">
-    <div class="header-group">
+    <section class="header-group">
       <div class="flex items-center justify-between py-10">
-        <div class="w-28 lg:w-36">
+        <section class="w-28 lg:w-36">
           <img class="w-full" src="../../assets/images/logo_white.png" alt="logo">
-        </div>
+        </section>
 
-        <div class="flex">
+        <section class="flex">
           <button
             id="header-create-account-button"
             @click="() => emit('create-account')"
@@ -21,10 +21,10 @@
           >
             Entrar
           </button>
-        </div>
+        </section>
       </div>
 
-      <div class="flex flex-col mt-28">
+      <section class="flex flex-col mt-28">
         <h1 class="text-4xl font-black text-white">
           Tenha um feedback. <br>
           E faça seus clientes mais <br class="hidden lg:inline-block">
@@ -43,9 +43,9 @@
             Crie uma conta grátis
           </button>
         </div>
-      </div>
+      </section>
 
-    </div>
+    </section>
   </header>
 </template>
 
