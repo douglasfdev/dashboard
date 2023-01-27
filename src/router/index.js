@@ -7,7 +7,7 @@ const Home = () => import('../views/Home/index.vue')
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Feedbacker - Saiba o que seu cliente pensa sobre seu produto',
     component: Home
   }
   // ,
@@ -30,6 +30,11 @@ const routes = [
 const router = createRouter({
   history: createWebHistory('/'),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = to.name
+  next()
 })
 
 export default router

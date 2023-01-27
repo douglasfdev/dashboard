@@ -1,4 +1,5 @@
 <template>
+  <title>Feedbacker - Saiba o que seu cliente pensa sobre você</title>
   <header class="header">
     <section class="header-group">
       <div class="flex items-center justify-between py-10">
