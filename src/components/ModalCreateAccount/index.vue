@@ -19,7 +19,7 @@
       <label class="block">
         <span class="text-lg font-medium text-gray-800">Nome</span>
         <input
-          id="email-field"
+          id="name-field"
           v-model="state.name.value"
           type="text"
           :class="{

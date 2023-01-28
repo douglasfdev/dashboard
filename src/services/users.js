@@ -1,8 +1,18 @@
 export default httpClient => ({
   getMe: async () => {
     const response = await httpClient.get('/users/me')
+
     const data = await response.data
-    console.log(`service -> ${data}`)
+
+    console.log(`service -> ${data} <- service`)
+
+    if (!data) {
+      const errors = {
+        status: response.status,
+        statusText: response.statusText
+      }
+      return errors
+    }
 
     return {
       data

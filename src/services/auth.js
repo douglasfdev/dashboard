@@ -6,15 +6,18 @@ export default httpClient => ({
       password
     })
 
+    const data = await response.data
+
+    console.log(data)
+
     let errors = null
 
-    if (!response.data) {
+    if (!data) {
       errors = {
         status: response.request.status,
         statusText: response.request.statusText
       }
     }
-    const data = response.data
 
     return {
       data,
@@ -27,9 +30,12 @@ export default httpClient => ({
       password
     })
 
+    const data = await response.data
+    console.log(data)
+
     let errors = null
 
-    if (!response.data) {
+    if (!data) {
       errors = {
         status: response.request.status,
         statusText: response.request.statusText
@@ -37,7 +43,7 @@ export default httpClient => ({
     }
 
     return {
-      data: response.data,
+      data,
       errors
     }
   }
