@@ -1,16 +1,16 @@
 import axios from 'axios'
-import router from '../router'
+import router from '@/router'
 import AuthService from './auth'
 import UsersService from './users'
 
 const API_ENVS = {
-  production: 'https://backend-treinamento-vue3.vercel.app',
+  production: '',
   development: '',
   local: 'http://localhost:3000'
 }
 
 const httpClient = axios.create({
-  baseURL: API_ENVS[process.env.NODE_ENV] || API_ENVS.local
+  baseURL: API_ENVS.local
 })
 
 httpClient.interceptors.request.use((config) => {
@@ -23,23 +23,21 @@ httpClient.interceptors.request.use((config) => {
   return config
 })
 
-httpClient.interceptors.response.use(
-  async (response) => {
-    return response
-  },
-  async (error) => {
-    const canThrowAnError = await error.request.status === 500
+httpClient.interceptors.response.use((response) => {
+  return response
+}, (error) => {
+  const canThrowAnError = error.code === 0 || error.code === 500 // error.request.status === 0 || error.request.status === 500;
 
-    if (canThrowAnError) {
-      throw new Error(error.message)
-    }
-
-    if (error.response.status === 401) {
-      router.push({ name: 'Home' })
-    }
-
-    return error
+  if (canThrowAnError) {
+    throw new Error(error.message)
   }
+
+  if (error.code === 401) {
+    router.push({ name: 'Home' })
+  }
+
+  return error
+}
 )
 
 export default {
