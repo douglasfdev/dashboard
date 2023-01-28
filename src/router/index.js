@@ -7,18 +7,24 @@ const Credentials = () => import('../views/Credentials/index.vue')
 const routes = [
   {
     path: '/',
-    name: 'Feedbacker - Saiba o que seu cliente pensa sobre seu produto',
+    name: 'Home',
     component: Home
   },
   {
     path: '/feedbacks',
     name: 'Feedbacks',
-    component: Feedbacks
+    component: Feedbacks,
+    meta: {
+      hasAuth: true
+    }
   },
   {
     path: '/credentials',
     name: 'Credentials',
-    component: Credentials
+    component: Credentials,
+    meta: {
+      hasAuth: true
+    }
   },
   {
     path: '/:pathMatch(.*)*',
