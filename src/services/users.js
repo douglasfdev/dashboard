@@ -1,9 +1,11 @@
-export default (httpClient) => ({
+export default httpClient => ({
   getMe: async () => {
     const response = await httpClient.get('/users/me')
+    const data = await response.data
+    console.log(`service -> ${data}`)
 
     return {
-      data: response.data
+      data
     }
   },
   generateApikey: async () => {

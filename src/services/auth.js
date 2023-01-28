@@ -14,9 +14,10 @@ export default httpClient => ({
         statusText: response.request.statusText
       }
     }
+    const data = response.data
 
     return {
-      data: response.data,
+      data,
       errors
     }
   },
