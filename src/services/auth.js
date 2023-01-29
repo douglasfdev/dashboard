@@ -8,14 +8,12 @@ export default httpClient => ({
 
     const data = await response.data
 
-    console.log(data)
-
     let errors = null
 
     if (!data) {
       errors = {
-        status: response.request.status,
-        statusText: response.request.statusText
+        status: response.status,
+        statusText: response.statusText
       }
     }
 
@@ -31,14 +29,13 @@ export default httpClient => ({
     })
 
     const data = await response.data
-    console.log(data)
 
     let errors = null
 
     if (!data) {
       errors = {
-        status: response.request.status,
-        statusText: response.request.statusText
+        status: response.status,
+        statusText: response.statusText
       }
     }
 

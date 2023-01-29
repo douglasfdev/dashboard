@@ -4,8 +4,6 @@ export default httpClient => ({
 
     const data = await response.data
 
-    console.log(`service -> ${data} <- service`)
-
     if (!data) {
       const errors = {
         status: response.status,
