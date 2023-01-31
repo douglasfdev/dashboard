@@ -21,7 +21,7 @@ export default {
         const token = window.localStorage.getItem('token')
 
         if (!token) {
-          router.push({ name: 'Home' })
+          router.push({ path: '/' })
           return
         }
 

@@ -148,7 +148,7 @@ export default {
       const { data, errors } = await services.auth.login({ email, password })
       if (!errors) {
         window.localStorage.setItem('token', data.token)
-        router.push({ name: 'Feedbacks' })
+        router.push({ path: '/feedbacks' })
         modal.close()
       }
 

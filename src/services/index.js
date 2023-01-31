@@ -39,7 +39,7 @@ httpClient.interceptors.response.use((response) => {
   }
 
   if (error.status === 401) {
-    router.push({ name: 'Home' })
+    router.push({ path: '/' })
   }
 
   setGlobalLoading(false)

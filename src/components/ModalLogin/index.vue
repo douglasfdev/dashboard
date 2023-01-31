@@ -124,7 +124,7 @@ export default {
 
         if (!errors) {
           window.localStorage.setItem('token', data.token)
-          router.push({ name: 'Feedbacks' })
+          router.push({ path: '/feedbacks' })
           state.isLoading = false
           modal.close()
           return
