@@ -42,7 +42,7 @@ export default {
 
     const logoutLabel = computed(() => {
       if (!store.currentUser.name) {
-        return '...'
+        return '... Saindo'
       }
       return `${store.currentUser.name} (sair)`
     })
@@ -50,7 +50,7 @@ export default {
     function handleLogut () {
       window.localStorage.removeItem('token')
       cleanCurrentUser()
-      router.push({ name: 'Home' })
+      router.push({ path: '/' })
     }
 
     return {
