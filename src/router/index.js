@@ -7,12 +7,12 @@ const Credentials = () => import('../views/Credentials/index.vue')
 export const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Feedbacker - Uma ferramenta para saber o que seu cliente pensa sobre você',
     component: Home
   },
   {
     path: '/feedbacks',
-    name: 'Feedbacks',
+    name: 'Feedbacks - Veja o uso da ferramenta',
     component: Feedbacks,
     meta: {
       hasAuth: true
@@ -20,7 +20,7 @@ export const routes = [
   },
   {
     path: '/credentials',
-    name: 'Credentials',
+    name: 'Credenciais - Um espaço reservado para você',
     component: Credentials,
     meta: {
       hasAuth: true

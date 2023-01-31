@@ -42,7 +42,7 @@ export default {
 
     const logoutLabel = computed(() => {
       if (!store.currentUser.name) {
-        return '... Saindo'
+        return '... Carregando'
       }
       return `${store.currentUser.name} (sair)`
     })
