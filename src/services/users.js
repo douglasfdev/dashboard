@@ -19,8 +19,10 @@ export default httpClient => ({
   generateApikey: async () => {
     const response = await httpClient.post('/users/me/apikey')
 
+    const data = await response.data
+
     return {
-      data: response.data
+      data
     }
   }
 })

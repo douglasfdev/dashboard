@@ -1,6 +1,6 @@
 <template>
   <modal-factory />
-  <router-view/>
+  <router-view />
 </template>
 
 <script>
