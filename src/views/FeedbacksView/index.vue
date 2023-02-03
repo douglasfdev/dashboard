@@ -25,7 +25,7 @@
               <filters />
             </template>
             <template #fallback>
-              ...loading
+              loading...
             </template>
           </suspense>
         </h1>
