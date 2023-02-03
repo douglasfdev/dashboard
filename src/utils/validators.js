@@ -9,8 +9,8 @@ export function validateEmptyAndLength3 (value) {
 }
 
 export function validateEmptyAndEmail (value) {
-  const campoObrigatorio = '*Este campo é obrigatório'
-  if (!value) return campoObrigatorio
+  const obrigatoryField = '*Este campo é obrigatório'
+  if (!value) return obrigatoryField
 
   const isValid = /^[a-z0-9.]+@[a-z0-9]+\.[\w]+(\.[\w]+)?$/i.test(value)
   const email = '*Este campo precisa ser um e-mail'
