@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <header class="flex justify-center w-full h-28 bg-brand-main">
     <header-logged />
@@ -115,8 +114,6 @@ export default {
       try {
         state.isLoading = true
         const { data } = await services.users.generateApikey()
-
-        console.log(data)
 
         setApiKey(data.apiKey)
         state.isLoading = false

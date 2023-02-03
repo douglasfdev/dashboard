@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
 <custom-header
   @create-account="handleAccountCreate"
