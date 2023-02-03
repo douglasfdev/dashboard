@@ -32,11 +32,12 @@
       <div
         v-else
         class="flex py-3 pl-5 mt-2 rounded justify-between items-center bg-brand-gray w-full lg:w-1/2"
-      >
+        >
         <span v-if="state.hasError">Erro ao carregar a API Key</span>
         <span v-else> {{ store.User.currentUser.apiKey }} </span>
         <div class="flex ml-20 mr-5" v-if="!state.hasError">
           <icon
+            @click="handleCopy"
             name="copy"
             :color="brandColors.graydark"
             size="24"
@@ -64,11 +65,11 @@
 
       <div
         v-else
-        class="py-3 pl-1 pr-20 mt-5 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll"
+        class="py-3 pl-5 pr-20 mt-2 rounded bg-brand-gray w-full lg:w-2/3 overflow-x-scroll"
       >
         <span v-if="state.hasError">Erro ao carregar o script</span>
           <pre v-else>
-            &lt;script src="https://douglasfdev-feedbacker-widget.vercel.app?api_key={{ store.User.currentUser.apiKey }}"&gt;&lt;/script&gt;"
+&lt;script src="https://douglasfdev-feedbacker-widget.vercel.app?api_key={{ store.User.currentUser.apiKey }}"&gt;&lt;/script&gt;"
           </pre>
       </div>
 
