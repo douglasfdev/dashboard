@@ -44,6 +44,7 @@
             class="cursor-pointer"
           />
           <icon
+            @click="handleGenerateApikey"
             name="loading"
             :color="brandColors.graydark"
             size="24"
