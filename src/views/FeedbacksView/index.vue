@@ -15,20 +15,22 @@
   <section id="listagem"
     class="flex justify-center w-full pb-20"
   >
-    <div class="w-4/5 max-w-6xl py-10 grid grid-cols4 gap-2">
+    <div class="w-4/5 max-w-6xl py-10 grid grid-cols-4 gap-2">
 
       <div>
         <h1 class="text-3xl font-black text-brand-darkgray">
           Listagem
-          <suspense>
-            <template #default>
-              <filters />
-            </template>
-            <template #fallback>
-              loading...
-            </template>
-          </suspense>
         </h1>
+        <suspense>
+          <template #default>
+            <filters
+              class="mt-8 animate__animated animate__fadeIn animate_faster"
+            />
+          </template>
+          <template #fallback>
+            <filters-loading class="mt-8" />
+          </template>
+        </suspense>
       </div>
 
       <div class="px-10 pt-20 col-span-3">
@@ -40,11 +42,12 @@
 
 <script>
 import Filters from './Filters.vue'
+import FiltersLoading from './FiltersLoading.vue'
 import HeaderLogged from '@/components/HeaderLogged'
 
 export default {
   name: 'Feedbacks',
-  components: { HeaderLogged, Filters }
+  components: { HeaderLogged, Filters, FiltersLoading }
 
 }
 </script>
