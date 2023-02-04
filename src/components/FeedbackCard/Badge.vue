@@ -1,8 +1,7 @@
 <template>
   <span
     :class="`bg-${classColor}`"
-    class="p-2 text-xs font-black text-white uppercase rounded-full"
-  >
+    class="p-2 text-xs font-black text-white uppercase rounded-full">
   {{ label }}
   </span>
 </template>
