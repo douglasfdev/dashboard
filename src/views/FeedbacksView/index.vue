@@ -22,6 +22,7 @@
         <suspense>
           <template #default>
             <filters
+            @select="changeFeedbacksType"
               class="mt-8 animate__animated animate__fadeIn animate__faster"
             />
           </template>
@@ -79,6 +80,7 @@ export default {
   setup () {
     const state = reactive({
       isLoading: false,
+      isLoadingFeedbacks: false,
       feedbacks: [],
       currentFeedbackType: '',
       pagination: {
@@ -93,7 +95,27 @@ export default {
     })
 
     function handleErrors (er) {
+      state.isLoading = false
       state.hasError = !!er
+    }
+
+    async function changeFeedbacksType (type) {
+      try {
+        state.isLoadingFeedbacks = true
+        state.pagination.offset = 0
+        state.pagination.limit = 5
+        state.currentFeedbackType = type
+        const { data } = await services.feedbacks.getAll({
+          type,
+          ...state.pagination
+        })
+
+        state.feedbacks = data.results
+        state.pagination = data.pagination
+        state.isLoading = false
+      } catch (er) {
+        handleErrors(er)
+      }
     }
 
     async function fetchFeedbacks () {
@@ -113,7 +135,8 @@ export default {
     }
 
     return {
-      state
+      state,
+      changeFeedbacksType
     }
   }
 }
