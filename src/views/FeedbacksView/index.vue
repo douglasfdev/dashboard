@@ -35,7 +35,7 @@
         <p
           class="text-lg text-center text-gray-800 font-regular"
           v-if="state.hasError">
-          Aconteceu um erro ao carregar os Feedbacks :(
+          Aconteceu um erro ao carregar os Feedbacks 🥺
         </p>
 
         <p
