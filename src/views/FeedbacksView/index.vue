@@ -34,8 +34,29 @@
       </div>
 
       <div class="px-10 pt-20 col-span-3">
+        <p
+          class="text-lg text-center text-gray-800 font-regular"
+          v-if="state.hasError">
+          Aconteceu um erro ao carregar os Feedbacks :(
+        </p>
 
+        <p
+          class="text-lg text-center text-gray-800 font-regular"
+          v-if="!state.feedbacks.length && !state.isLoading">
+          Ainda nenhum feedback recebido
+        </p>
       </div>
+
+      <feedback-card-loading v-if="state.isLoading" />
+      <feedback-card
+        v-else
+        v-for="(feedback, index) in state.feedbacks"
+        :key="feedback.id"
+        :is-opened="index === 0"
+        :feedback="feedback"
+        class="mb-8"
+      />
+
     </div>
   </section>
 </template>
@@ -44,14 +65,59 @@
 import Filters from './Filters.vue'
 import FiltersLoading from './FiltersLoading.vue'
 import HeaderLogged from '@/components/HeaderLogged'
+import FeedbackCard from '@/components/FeedbackCard'
+import FeedbackCardLoading from '@/components/FeedbackCard/Loading'
+import { onMounted, reactive } from 'vue'
+import services from '@/services'
 
 export default {
   name: 'Feedbacks',
-  components: { HeaderLogged, Filters, FiltersLoading }
+  components: {
+    HeaderLogged,
+    Filters,
+    FiltersLoading,
+    FeedbackCard,
+    FeedbackCardLoading
+  },
+  setup () {
+    const state = reactive({
+      isLoading: false,
+      feedbacks: [],
+      currentFeedbackType: '',
+      pagination: {
+        limit: 5,
+        offset: 0
+      },
+      hasError: false
+    })
 
+    onMounted(() => {
+      fetchFeedbacks()
+    })
+
+    function handleErrors (er) {
+      state.hasError = !!er
+    }
+
+    async function fetchFeedbacks () {
+      try {
+        state.isLoading = true
+        const { data } = await services.feedbacks.getAll({
+          ...state.pagination,
+          type: state.currentFeedbackType
+        })
+
+        state.feedbacks = data.results
+        state.pagination = data.pagination
+        state.isLoading = false
+      } catch (er) {
+        handleErrors(er)
+      }
+    }
+
+    return {
+      state
+    }
+  }
 }
 </script>
-
-<style>
-
-</style>
